@@ -1,0 +1,52 @@
+ QUESTION 3: LINK ANALYSIS REPORT
+
+
+1. Commands Executed & System Outputs
+- Command 1: echo "Important developer project data" > base_file.txt
+  Output: [Clean new line]
+  Explanation: I used 'echo' with a redirection arrow to create a file containing sample text. I observed that the file was instantly written to the system.
+
+- Command 2: ln base_file.txt hard_link.txt
+  Output: [Clean new line]
+  Explanation: I ran 'ln' to build a Hard Link pointing to my base file. I observed that the link was created without copying the underlying data blocks.
+
+- Command 3: ln -s base_file.txt sym_link.txt
+  Output: [Clean new line]
+  Explanation: I executed 'ln -s' to generate a Symbolic (Soft) Link. I observed that it generated a path shortcut pointing directly to the original filename.
+
+- Command 4: ls -li base_file.txt hard_link.txt sym_link.txt
+  Output: [Displays identical Inode numbers for base and hard link, unique Inode for sym link]
+  Explanation: I used 'ls -li' to examine the underlying tracking index numbers (inodes) of all three items. I observed that the hard link shares the exact same inode as the base file, while the symbolic link has its own unique number.
+
+- Command 5: rm base_file.txt
+  Output: [Clean new line]
+  Explanation: I ran 'rm' to simulate an accidental deletion of the original base file. I observed that the filename was successfully removed from the directory list.
+
+- Command 6: cat hard_link.txt
+  Output: "Important developer project data"
+  Explanation: I used 'cat' to test the hard link after the original file was deleted. I observed that the data remains fully intact and readable.
+
+- Command 7: cat sym_link.txt
+  Output: cat: sym_link.txt: No such file or directory
+  Explanation: I ran 'cat' on the symbolic link after the file deletion. I observed that it broke instantly and threw an error because its target path was destroyed.
+
+2. Summary of Observations
+I discovered that Hard Links point directly to data blocks on the disk, making them safe from accidental deletions. In contrast, Symbolic Links are just text shortcuts that break immediately if the original file path is renamed or removed.
+
+1.Inode numbers 
+- base_file.txt Inode Number: 233090
+- hard_link.txt Inode Number: 233090
+- sym_link.txt  Inode Number: 231703
+
+2. Effect of deleting the original file
+- Result of running 'cat hard_link.txt': It successfully displayed the original text.
+- Result of running 'cat sym_link.txt':  It displayed a 'No such file or directory' error.
+
+3. Comparison: Hard Link and Symbolic Link
+- Hard Link: Shares the exact same Inode number as the original file. It is a twin copy pointing directly to the actual data blocks on the hard drive.
+- Symbolic Link: Has a completely unique Inode number. It behaves purely like a desktop shortcut, pointing only to the original file's name.
+
+4. Conclusions Drawn from the Experiment
+When a developer accidentally deletes an original file, a Symbolic Link breaks immediately because the filename path it was pointing to no longer exists.
+ However, a Hard Link preserves the data completely. 
+In Linux, data on a hard drive is only deleted when its total link reference counter drops to absolute zero. Because our hard link acts as a direct line to the data blocks, the content remains perfectly safe and readable through it.

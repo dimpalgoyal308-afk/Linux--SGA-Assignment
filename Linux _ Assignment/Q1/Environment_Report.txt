@@ -1,0 +1,41 @@
+ QUESTION 1: ENVIRONMENT REPORT 
+
+1. Username and groups associated with account:
+username = 1000(coder)
+gid= 1000(coder)
+groups = 1000(coder),27(sudo)
+
+Command executed: id
+
+Observations: 
+1.This command queries the system database to display the current active user's absolute user identity string (UID), primary group identity number (GID), and all associated supplementary groups. 
+2.Running this confirms my precise user deployment account name and logs my access permissions before communicating with remote secure cluster endpoints.
+
+2. Current Shell Used
+current shell = /bin/bash
+Command executed: echo $SHELL
+
+Observations: 
+1.This instruction prints the structural system path configuration of the command-line interpreter binary currently parsing my keystrokes (typically /bin/bash).
+2. Verifying this interpreter ensures absolute environment compatibility before building or executing automated system maintenance shell scripts.
+
+3. Current Working Directory Location
+Current Working Directory = /home/coder
+Command executed: pwd
+
+Observations: 
+1.The 'print working directory' utility tracks and returns the exact absolute path from the root node down to my active terminal instance location.
+2. It provides a reliable orientation reference point so I know precisely where files and directories are being generated.
+
+4. List of Files and directories in workspace
+Command executed: ls -la
+
+Observations: 
+1.This command performs a detailed, long-format listing of all files and folders in the workspace, explicitly displaying hidden operational configurations prefixed with a dot. 
+2.It provides deep visibility into file storage size metadata, group owners, and access permissions.
+
+5. Network Connectivity verification
+Command executed: ping -c 4 8.8.8.
+Observations: 
+1.This command transmits exactly 4 ICMP echo requests out to an external public destination IP address to evaluate live network-layer routing. 
+2.The metrics map packet transit success, check latency variations, and verify that the virtual machine has working external internet access.

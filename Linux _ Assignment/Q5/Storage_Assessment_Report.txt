@@ -1,0 +1,29 @@
+  QUESTION 5: STORAGE HEALTH ASSESSMENT REPORT 
+
+
+1. Commands Executed & System Outputs
+- Command 1: lsblk
+  Output: present in screnshot
+  Explanation: I ran the 'lsblk' command to catalog all available physical block storage storage hardware. I observed the mapped layout of active storage disks and partition tracks.
+
+- Command 2: df -h
+  Output: present in screnshot
+  Explanation: I executed 'df -h' to check the space consumption statistics across all mounted file systems. I observed that the root partition is healthy and has plenty of open gigabytes available.
+
+- Command 3: df -i
+  Output: present in screnshot
+  Explanation: I utilized 'df -i' to analyze our index node (inode) tracking allocation table. I observed that only a tiny fraction of available file system index pointers are currently used, meaning the server can safely create millions of new files.
+
+
+1. Infrastructure Metrics Summary
+- Storage Device Mapping: Evaluated using 'lsblk' to catalog physical volumes and active disk slices.
+- Volume Capacity Usage: Monitored via 'df -h' to map total, used, and available space in gigabytes.
+- Inode Allocation Profile: Audited using 'df -i' to verify available file structural pointers.
+
+
+2. System Storage Health Observations
+The active file systems show nominal distribution blocks without reaching hazardous consumption milestones. 
+The primary root partition operates well below critical thresholds, indicating stable storage availability for the new application server deployment. The inode tracking matrix shows a matching healthy profile, verifying that the system has an abundant pool of free indexes to generate new application configuration files and log records safely.
+
+3. Professional Proactive Recommendations
+To prevent unforeseen server performance bottlenecks, primary block storage paths should be monitored to ensure disk utilization does not scale past an 80% maximum boundary ceiling. Beyond this point, data fragmentation can reduce system speed. Furthermore, I recommend deploying a automated log rotation policy. This prevents an over-accumulation of small log files from silently exhausting available inodes, protecting file system integrity even when physical storage space remains open.

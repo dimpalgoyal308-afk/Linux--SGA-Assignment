@@ -1,0 +1,46 @@
+ QUESTION 4: FILE ACCESS AND I/O INVESTIGATION 
+
+
+1. Commands Executed & System Outputs
+- Command 1: ps -ef | head -n 20
+  Output: [Lists active process IDs (PIDs) running on the system]
+  Explanation: I ran 'ps -ef' to investigate active background application processes. I observed several running system utilities, each assigned a specific tracking process ID.
+
+- Command 2: ls -la > successful_output.log
+  Output: [Clean new line, screen output hidden]
+  Explanation: I executed an 'ls' list command and redirected the standard output stream (FD 1) into a log file using '>'. I observed that the normal screen text was completely redirected into the file.
+
+- Command 3: ls non_existent_directory 2> explicit_error.log
+  Output: [Clean new line, error hidden from screen]
+  Explanation: I forced a listing failure and redirected the standard error stream (FD 2) using '2>'. I observed that the error message skipped the screen and was successfully trapped inside the error log file.
+
+- Command 4: ulimit -a
+  Output:present as screnshot 
+  core file size = unlimited
+  data seg size = unlimited etc..
+  Explanation: I executed 'ulimit -a' to inspect the built-in system safety restrictions. I observed the maximum allowable open file handles that a single running program can hold at once.
+
+2. Summary of Observations
+I learned that Linux manages I/O operations through numerical streams called File Descriptors (0 for input, 1 for output, 2 for errors). By using redirection characters, we can isolate errors from normal data logs, which effectively solves application logging issues.
+1. Environment Observations & Redirection Testing
+- Active Processes: Investigated using 'ps -ef | head -n 20' to map running program identities (PIDs) and background tasks.
+- Stream Isolation Logs: Successfully created 'successful_output.log' for standard data and 'explicit_error.log' to capture error messages.
+- Resource Limits: Inspected using 'ulimit -a' to identify maximum operating thresholds.
+
+
+2. Technical Observations and how linux manage file I/O
+   File Descriptors:
+   In Linux, whenever a program opens a file, a stream, or a network link, the operating system assigns it a tracking number called a File Descriptor (FD). 
+
+- The Three Standard Streams:
+
+1. File Descriptor 0 (Standard Input ): Receives typed input from your keyboard.
+2. File Descriptor 1 (Standard Output ): Sends normal command text results to your screen.
+3. File Descriptor 2 (Standard Error): Sends error problem messages to your screen.
+
+- How Redirection Solves Logging Issues:
+The character '>' tells Linux to intercept the normal text output (FD 1) and send it into a text file instead of printing it to the black screen. 
+Adding a '2>' specifically tells Linux to trap error messages (FD 2) and pipe them into a dedicated error log file. This keeps normal data and error messages separated, making it easy to troubleshoot broken applications.
+
+- Resource Limit :
+The 'ulimit -a' command shows us the strict safety ceilings configured by the system.
